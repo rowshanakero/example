@@ -1,4 +1,10 @@
+import redis
+conn = redis.Redis('localhost')
 
-#!/usr/bin/python3
-# Say hello, world.
-print ("Hello, world!")
+user = {"Name":"Pradeep", "Company":"SCTL", "Address":"Mumbai", "Location":"RCP"}
+
+conn.hmset("pythonDict", user)
+
+conn.hgetall("pythonDict")
+
+{'Company': 'SCTL', 'Address': 'Mumbai', 'Location': 'RCP', 'Name': 'Pradeep'}
