@@ -1,10 +1,10 @@
+import pickle
 import redis
-conn = redis.Redis('localhost')
 
-user = {"Name":"Pradeep", "Company":"SCTL", "Address":"Mumbai", "Location":"RCP"}
+r = redis.StrictRedis('localhost')
+mydict = {1:2,2:3,3:4}
+p_mydict = pickle.dumps(mydict)
+r.set('mydict',p_mydict)
 
-conn.hmset("pythonDict", user)
-
-conn.hgetall("pythonDict")
-
-{'Company': 'SCTL', 'Address': 'Mumbai', 'Location': 'RCP', 'Name': 'Pradeep'}
+read_dict = r.get('mydict')
+yourdict = pickle.loads(read_dict)
