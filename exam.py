@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from redis import Redis #for reddis stuff
 
 # step 1: import the redis-py client package
 import redis
