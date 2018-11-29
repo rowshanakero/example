@@ -2,7 +2,7 @@
 from redis import Redis #for reddis stuff
 
 # step 1: import the redis-py client package
-import redis
+
 
 # step 2: define our connection information for Redis
 # Replaces with your configuration information
