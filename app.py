@@ -107,7 +107,10 @@ def redis_set(k):
         result = r.set(k, user_value)
         
         # return to user
-        return result
+        if result == True:
+            return "Success"
+        else:
+            return "Something went wrong"
 
 @app.route("/kv-record/<string:k>", methods=['PUT'])
 def redis_update(key):
