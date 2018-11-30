@@ -114,7 +114,7 @@ def redis_set(k):
 
 @app.route("/kv-record/<string:k>", methods=['PUT'])
 def redis_update(key):
-      r = Redis(host="myredis")
+    r = Redis(host="myredis")
     
     # check and see if the key already exists
     if not r.get(k):
