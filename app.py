@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request
 import hashlib
-app = Flask(__name__)
 import requests
 import json
 from redis import Redis #for reddis stuff
+
+
+app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
@@ -82,8 +84,11 @@ def getSlack(name):
         return jsonify(input, False)
     
 @app.route("/kv-retrieve/<string:key>")
-def redis_get(key):
-    return "called kv-retrieve with GET"
+def redis_get(key): 
+    #  only has to use Redis
+    r = Redis(host="myredis")
+    keyss = r.get(key)
+    return keyss
 
 @app.route("/kv-record/<string:k>", methods=['POST'])
 def redis_set(key):
