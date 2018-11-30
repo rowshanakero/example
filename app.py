@@ -117,7 +117,7 @@ def redis_update(key):
       r = Redis(host="myredis")
     
     # check and see if the key already exists
-    if not dr.get(k):
+    if not r.get(k):
         return "Can't update if its doesnt exist!"
     else:
           # write to redis
