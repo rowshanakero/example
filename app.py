@@ -91,8 +91,23 @@ def redis_get(key):
     return keyss
 
 @app.route("/kv-record/<string:k>", methods=['POST'])
-def redis_set(key):
-    pass
+def redis_set(k):
+    r = Redis(host="myredis")
+    
+    # check and see if the key already exists
+    if r.get(k):
+        return "Key already exists!
+    else:
+        # write to redis
+        
+        # first, grab the new value from the JSON payload
+        user_value = request.get_json().get('value')
+        
+        # call the redis set() function
+        result = r.set(k, user_value)
+        
+        # return to user
+        return result
 
 @app.route("/kv-record/<string:k>", methods=['PUT'])
 def redis_update(key):
