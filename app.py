@@ -81,7 +81,17 @@ def getSlack(name):
     else:
         return jsonify(input, False)
     
+@app.route("/kv-retrieve/<string:key>")
+def redis_get(key):
+    return "called kv-retrieve with GET"
 
+@app.route("/kv-record/<string:k>", methods=['POST'])
+def redis_set(key):
+    pass
+
+@app.route("/kv-record/<string:k>", methods=['PUT'])
+def redis_update(key):
+    pass
 
 
 if __name__ == "__main__":
