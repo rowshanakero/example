@@ -96,7 +96,7 @@ def redis_set(k):
     
     # check and see if the key already exists
     if r.get(k):
-        return "Key already exists!
+        return "Key already exists!"
     else:
         # write to redis
         
